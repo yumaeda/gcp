@@ -40,6 +40,14 @@ gcloud container clusters create-auto hello-world \
 ```zsh
 gcloud container clusters get-credentials hello-world --region us-west1
 ```
+### Create Deployment (w/ replicas=2)
+```zsh
+kubectl create deployment hello-world --image=us-west1-docker.pkg.dev/${PROJECT_ID}/hello-world/hello-world:v1
+
+kubectl scale deployment hello-world --replicas=2
+
+kubectl autoscale deployment hello-world --cpu-percent=80 --min=1 --max=2
+```
 
 &nbsp;
 
