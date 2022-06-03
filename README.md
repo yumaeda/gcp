@@ -28,6 +28,10 @@ gcloud artifacts repositories create hello-world \
     --location=us-west1 \
     --description="Docker container image repository"
 ```
+## Configure Docker
+```zsh
+gcloud auth configure-docker us-west1-docker.pkg.dev
+```
 ### Create GKE cluster
 ```zsh
 gcloud services enable container.googleapis.com
@@ -53,7 +57,6 @@ kubectl autoscale deployment hello-world --cpu-percent=80 --min=1 --max=2
 ```zsh
 kubectl expose deployment hello-world --name=hello-world-service --type=LoadBalancer --port 80 --target-port 8080
 ```
-
 
 &nbsp;
 
