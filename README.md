@@ -49,6 +49,12 @@ kubectl scale deployment hello-world --replicas=2
 kubectl autoscale deployment hello-world --cpu-percent=80 --min=1 --max=2
 ```
 
+### Expose Deployment via LoadBalancer
+```zsh
+kubectl expose deployment hello-world --name=hello-world-service --type=LoadBalancer --port 80 --target-port 8080
+```
+
+
 &nbsp;
 
 ## References
