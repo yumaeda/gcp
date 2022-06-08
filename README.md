@@ -93,5 +93,12 @@ gcloud artifacts repositories delete ${REPOSITORY}
 ```zsh
 gcloud container clusters delete ${CLUSTER_NAME}
 ```
+### Enable Cloud Spanner service
+```zsh
+gcloud services enable spanner.googleapis.com
+```
+
+&nbsp;
+
 ## References
 - https://zenn.dev/chameleon/articles/eb34c3c76f36bd
