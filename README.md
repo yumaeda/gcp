@@ -87,6 +87,7 @@ kubectl expose deployment ${DEPLOYMENT} --name=${SERVICE} --type=LoadBalancer --
 ## Misc
 ### Delete `Artifact Registry`
 ```zsh
+gcloud artifacts repositories delete ${REPOSITORY}
 ```
 ### Delete GKE cluster
 ```zsh
