@@ -62,7 +62,7 @@ gcloud container clusters create \
 ```
 ### Check connection to the GKE cluster
 ```zsh
-gcloud container clusters get-credentials ${CLUSTER_NAME} --region ${REGION}
+gcloud container clusters get-credentials ${CLUSTER_NAME}
 ```
 ### Get a list of GKE cluster
 ```zsh
