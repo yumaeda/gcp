@@ -23,7 +23,7 @@ export IMG_VERSION=1.0.1
 export REGION=us-central1
 export ZONE=us-central1-a
 export CLUSTER_NAME=hello-world
-export REPO_NAME=hello-world
+export REPOSITORY=hello-world
 export DEPLOYMENT=hello-world
 export SERVICE=hello-world-service
 ```
@@ -35,7 +35,7 @@ gcloud config set compute/zone ${ZONE}
 ```
 ### Create `Artifact Registry`
 ```zsh
-gcloud artifacts repositories create ${REPO_NAME} \
+gcloud artifacts repositories create ${REPOSITORY} \
     --repository-format=docker \
     --location=${REGION} \
     --description="Docker container image repository"
@@ -70,7 +70,7 @@ gcloud container clusters list
 ```
 ### Create Deployment (w/ replicas=2)
 ```zsh
-kubectl create deployment ${DEPLOYMENT} --image=${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO_NAME}/${IMG_NAME}:${IMG_VERSION}
+kubectl create deployment ${DEPLOYMENT} --image=${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY}/${IMG_NAME}:${IMG_VERSION}
 
 kubectl scale deployment ${DEPLOYMENT} --replicas=2
 
