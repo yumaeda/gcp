@@ -64,5 +64,10 @@ kubectl expose deployment hello-world --name=hello-world-service --type=LoadBala
 
 &nbsp;
 
+## Misc
+### Delete GKE cluster
+```zsh
+gcloud container clusters delete hello-world
+```
 ## References
 - https://zenn.dev/chameleon/articles/eb34c3c76f36bd
