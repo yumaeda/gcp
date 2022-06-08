@@ -44,6 +44,10 @@ gcloud container clusters create-auto hello-world \
 ```zsh
 gcloud container clusters get-credentials hello-world --region us-west1
 ```
+### Get a list of GKE cluster
+```zsh
+gcloud container clusters list
+```
 ### Create Deployment (w/ replicas=2)
 ```zsh
 kubectl create deployment hello-world --image=us-west1-docker.pkg.dev/${PROJECT_ID}/hello-world/hello-world:v1
