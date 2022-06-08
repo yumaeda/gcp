@@ -15,34 +15,52 @@ source ~/.zshrc
 ```zsh
 gcloud auth login
 ```
+### Set environment variables
+```zsh
+export PROJECT_ID=hello-world-xxxxxx
+export IMG_NAME=hello-world
+export IMG_VERSION=1.0.1
+export REGION=us-central1
+export ZONE=us-central1-a
+export CLUSTER_NAME=hello-world
+export REPO_NAME=hello-world
+export DEPLOYMENT=hello-world
+export SERVICE=hello-world-service
+```
 ### Config
 ```zsh
 gcloud config set project ${PROJECT_ID}
-gcloud config set compute/region us-west1
-gcloud config set compute/zone us-west1-a
+gcloud config set compute/region ${REGION}
+gcloud config set compute/zone ${ZONE}
 ```
 ### Create `Artifact Registry`
 ```zsh
-gcloud artifacts repositories create hello-world \
+gcloud artifacts repositories create ${REPO_NAME} \
     --repository-format=docker \
-    --location=us-west1 \
+    --location=${REGION} \
     --description="Docker container image repository"
 ```
 ## Configure Docker
 ```zsh
-gcloud auth configure-docker us-west1-docker.pkg.dev
+gcloud auth configure-docker ${REGION}-docker.pkg.dev
 ```
 ### Create GKE cluster
 ```zsh
 gcloud services enable container.googleapis.com
 
-gcloud container clusters create-auto hello-world \
-    --region us-west1 \
-    --project=${PROJECT_ID}
+gcloud container clusters create \
+  --preemptible \
+  --project=${PROJECT_ID} \
+  --machine-type g1-small \
+  --num-nodes 3 \
+  --disk-size 10 \
+  --zone ${ZONE} \
+  --cluster-version latest \
+  ${CLUSTER_NAME}
 ```
 ### Check connection to the GKE cluster
 ```zsh
-gcloud container clusters get-credentials hello-world --region us-west1
+gcloud container clusters get-credentials ${CLUSTER_NAME} --region ${REGION}
 ```
 ### Get a list of GKE cluster
 ```zsh
@@ -50,24 +68,27 @@ gcloud container clusters list
 ```
 ### Create Deployment (w/ replicas=2)
 ```zsh
-kubectl create deployment hello-world --image=us-west1-docker.pkg.dev/${PROJECT_ID}/hello-world/hello-world:v1
+kubectl create deployment ${DEPLOYMENT} --image=${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO_NAME}/${IMG_NAME}:${IMG_VERSION}
 
-kubectl scale deployment hello-world --replicas=2
+kubectl scale deployment ${DEPLOYMENT} --replicas=2
 
-kubectl autoscale deployment hello-world --cpu-percent=80 --min=1 --max=2
+kubectl autoscale deployment ${DEPLOYMENT} --cpu-percent=80 --min=1 --max=2
 ```
 
 ### Expose Deployment via LoadBalancer
 ```zsh
-kubectl expose deployment hello-world --name=hello-world-service --type=LoadBalancer --port 80 --target-port 8080
+kubectl expose deployment ${DEPLOYMENT} --name=${SERVICE} --type=LoadBalancer --port 80 --target-port 8080
 ```
 
 &nbsp;
 
 ## Misc
+### Delete `Artifact Registry`
+```zsh
+```
 ### Delete GKE cluster
 ```zsh
-gcloud container clusters delete hello-world
+gcloud container clusters delete ${CLUSTER_NAME}
 ```
 ## References
 - https://zenn.dev/chameleon/articles/eb34c3c76f36bd
