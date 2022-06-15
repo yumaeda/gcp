@@ -15,6 +15,8 @@ source ~/.zshrc
 ```zsh
 gcloud auth login
 ```
+- Credential file is stored to `~/.config/gcloud/application_default_credentials.json`.
+
 ### Set environment variables
 ```zsh
 export PROJECT_ID=hello-world-xxxxxx
