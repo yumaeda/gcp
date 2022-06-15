@@ -19,15 +19,15 @@ gcloud auth login
 
 ### Set environment variables
 ```zsh
-export PROJECT_ID=hello-world-xxxxxx
-export IMG_NAME=hello-world
-export IMG_VERSION=1.0.1
+export PROJECT_ID=xxxx
+export IMG_NAME=xxxx
+export IMG_VERSION=x.x.x
 export REGION=us-central1
 export ZONE=us-central1-a
-export CLUSTER_NAME=hello-world
-export REPOSITORY=hello-world
-export DEPLOYMENT=hello-world
-export SERVICE=hello-world-service
+export CLUSTER_NAME=xxxx
+export REPOSITORY=xxxx
+export DEPLOYMENT=xxxx
+export SERVICE=xxxx
 ```
 ### Config
 ```zsh
