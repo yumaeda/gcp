@@ -87,6 +87,16 @@ kubectl expose deployment ${DEPLOYMENT} --name=${SERVICE} --type=LoadBalancer --
 &nbsp;
 
 ## Misc
+### List Credentialed accounts
+```zsh
+gcloud auth list
+```
+
+### Change active account
+```zsh
+gcloud config set account {Account_Email}
+```
+
 ### Delete `Artifact Registry`
 ```zsh
 gcloud artifacts repositories delete ${REPOSITORY}
