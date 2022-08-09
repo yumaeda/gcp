@@ -112,5 +112,10 @@ gcloud services enable spanner.googleapis.com
 
 &nbsp;
 
+### Cloud Domains
+- [Cloud Domains](https://console.cloud.google.com/net-services/domains/registrations/list)
+
+&nbsp;
+
 ## References
 - https://zenn.dev/chameleon/articles/eb34c3c76f36bd
