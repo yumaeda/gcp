@@ -119,3 +119,6 @@ gcloud services enable spanner.googleapis.com
 
 ## References
 - https://zenn.dev/chameleon/articles/eb34c3c76f36bd
+
+## TODOs
+- https://www.padok.fr/en/blog/gcs-gke-migration
