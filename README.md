@@ -62,14 +62,17 @@ gcloud container clusters create \
   --cluster-version latest \
   ${CLUSTER_NAME}
 ```
-### Check connection to the GKE cluster
-```zsh
-gcloud container clusters get-credentials ${CLUSTER_NAME}
-```
+
 ### Get a list of GKE cluster
 ```zsh
 gcloud container clusters list
 ```
+
+### Populate `kubeconfig` file
+```zsh
+gcloud container clusters get-credentials ${CLUSTER_NAME} --region ${REGION} --project ${PROJECT_ID}
+```
+
 ### Create Deployment (w/ replicas=2)
 ```zsh
 kubectl create deployment ${DEPLOYMENT} --image=${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY}/${IMG_NAME}:${IMG_VERSION}
