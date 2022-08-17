@@ -73,7 +73,7 @@ gcloud container clusters list
 gcloud container clusters get-credentials ${CLUSTER_NAME} --region ${REGION} --project ${PROJECT_ID}
 ```
 
-- Check [kubernetes](https://github.com/yumaeda/kubernetes) for how to list and switch current cluster.
+### Check [kubernetes](https://github.com/yumaeda/kubernetes) for how to list and switch current cluster.
 
 ### Create Deployment (w/ replicas=2)
 ```zsh
