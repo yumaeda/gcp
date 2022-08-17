@@ -73,6 +73,29 @@ gcloud container clusters list
 gcloud container clusters get-credentials ${CLUSTER_NAME} --region ${REGION} --project ${PROJECT_ID}
 ```
 
+## List
+- To list all configured clusters
+```sh
+kubectx
+```
+
+## Show Current
+- To display the current context's cluster:
+```sh
+kubectx -c
+```
+
+- To display the current context's namespace:
+```sh
+kubens -c
+```
+
+## Switch
+- To switch your context to one of the clusters displayed by `bubectx`.
+```sh
+kubectx ${CLUSTER_CONTEXT}
+```
+
 ### Create Deployment (w/ replicas=2)
 ```zsh
 kubectl create deployment ${DEPLOYMENT} --image=${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY}/${IMG_NAME}:${IMG_VERSION}
