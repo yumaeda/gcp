@@ -17,18 +17,6 @@ gcloud auth login
 ```
 - Credential file is stored to `~/.config/gcloud/application_default_credentials.json`.
 
-### Set environment variables
-```zsh
-export PROJECT_ID=xxxx
-export IMG_NAME=xxxx
-export IMG_VERSION=x.x.x
-export REGION=us-central1
-export ZONE=us-central1-a
-export CLUSTER_NAME="prod-$REGION-yumaeda"
-export REPOSITORY=xxxx
-export DEPLOYMENT=xxxx
-export SERVICE=xxxx
-```
 ### Config
 ```zsh
 gcloud config set project ${PROJECT_ID}
@@ -46,34 +34,7 @@ gcloud artifacts repositories create ${REPOSITORY} \
 ```zsh
 gcloud auth configure-docker ${REGION}-docker.pkg.dev
 ```
-### Create GKE cluster
-- From GKE 1.12.0, [`f1-micro` machine type is no longer supported](https://stackoverflow.com/questions/61357217/gcloud-kubernetes-in-f1-micro-results-in-node-pools-of-f1-micro-machines-are-no).
 
-```zsh
-gcloud services enable container.googleapis.com
-
-gcloud container clusters create \
-  --preemptible \
-  --project=${PROJECT_ID} \
-  --machine-type g1-small \
-  --num-nodes 3 \
-  --disk-size 10 \
-  --zone ${ZONE} \
-  --cluster-version latest \
-  ${CLUSTER_NAME}
-```
-
-### Get a list of GKE cluster
-```zsh
-gcloud container clusters list
-```
-
-### Populate `kubeconfig` file
-```zsh
-gcloud container clusters get-credentials ${CLUSTER_NAME} --region ${REGION} --project ${PROJECT_ID}
-```
-
-### Check [kubernetes](https://github.com/yumaeda/kubernetes) for how to list and switch current cluster.
 
 ### Create Deployment (w/ replicas=2)
 ```zsh
