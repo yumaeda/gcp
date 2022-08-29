@@ -52,10 +52,7 @@ gcloud config set account {Account_Email}
 ```zsh
 gcloud artifacts repositories delete ${REPOSITORY}
 ```
-### Delete GKE cluster
-```zsh
-gcloud container clusters delete ${CLUSTER_NAME}
-```
+
 ### Enable Cloud Spanner service
 ```zsh
 gcloud services enable spanner.googleapis.com
