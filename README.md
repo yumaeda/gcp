@@ -35,21 +35,6 @@ gcloud artifacts repositories create ${REPOSITORY} \
 gcloud auth configure-docker ${REGION}-docker.pkg.dev
 ```
 
-
-### Create Deployment (w/ replicas=2)
-```zsh
-kubectl create deployment ${DEPLOYMENT} --image=${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY}/${IMG_NAME}:${IMG_VERSION}
-
-kubectl scale deployment ${DEPLOYMENT} --replicas=2
-
-kubectl autoscale deployment ${DEPLOYMENT} --cpu-percent=80 --min=1 --max=2
-```
-
-### Expose Deployment via LoadBalancer
-```zsh
-kubectl expose deployment ${DEPLOYMENT} --name=${SERVICE} --type=LoadBalancer --port 80 --target-port 8080
-```
-
 &nbsp;
 
 ## Misc
