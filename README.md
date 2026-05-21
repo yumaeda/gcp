@@ -1,21 +1,24 @@
 # GCP
-## Google Cloud SDK
+## Google Cloud CLI
 ### Install
 ```zsh
-brew install --cask google-cloud-sdk
+brew install --cask gcloud-cli
 ```
 ### Setup
 ```zsh
-echo "source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'" >> ~/.zshrc
-echo "source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'" >> ~/.zshrc
-
+echo 'export PATH=$HOMEBREW_PREFIX/share/google-cloud-sdk/bin:"$PATH"' >> ~/.zshrc
 source ~/.zshrc
 ```
+
+### Initialization
+```zsh
+gcloud init
+```
+
 ### Login
 ```zsh
 gcloud auth login
 ```
-- Credential file is stored to `~/.config/gcloud/application_default_credentials.json`.
 
 ### Config
 ```zsh
